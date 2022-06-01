@@ -17,8 +17,7 @@
                     <div class="navbar" id="myTopnav">
 
                         <a class="text-shadow nav-link" href="https://demo.openstreamingplatform.com"><b>Demo</b></a>
-                        <a class="text-shadow nav-link" href="https://osp.discourse.group"><b>Forums</b></a>
-                        <a class="text-shadow nav-link" href="https://wiki.openstreamingplatform.com"><b>Support</b></a>
+                        <a class="text-shadow nav-link" href="https://open-streaming-platform.readthedocs.io/"><b>Docs</b></a>
                         <a class="text-shadow nav-link" href="https://blog.divby0.net"><b>Blog</b></a>
                         <a class="text-shadow nav-link" href="#contribute"><b>Contribute</b></a>
                     </div>
@@ -27,28 +26,23 @@
             <div class="text-box">
                 <h1 class="heading-primary">
                     <span class="heading-primary-main text-shadow">Open Streaming Platform</span>
-                    <span class="heading-primary-sub text-shadow">Free, Self-Hosted, Open Source Streaming </span><br>
+                    <span class="heading-primary-sub text-shadow">Free, Self-Hosted, Open Source Streaming </span>
                 </h1>
                 <div class="videoBox">
                     <iframe src='https://demo.openstreamingplatform.com/play/181?embedded=True&autoplay=True' width=600 height=345 frameBorder="0" allowfullscreen></iframe>
                 </div>
                 <div class="actionLink">
-                    <a href="https://wiki.openstreamingplatform.com/Install/Standard" class="btn btn-white btn-animated shadow"><b>Get Started</b></a>
+                    <a href="https://open-streaming-platform.readthedocs.io/en/nightly/install/install.html" class="btn btn-white btn-animated shadow"><b>Get Started</b></a>
                 </div>
             </div>
             <div class="release shadow slide-in-left">
                 <div class="release-container">
-                    <div class="release-version-header">Current Release:
-                        <span id="releaseVersion"></span>
-                    </div>
-                    <div class="release-date-header">Release Date:
-                        <span id="releaseDate"></span>
-                    </div>
-                    <div class="release-button-row">
-                        <a class="releaseButton releaseButton-green shadow" href="https://gitlab.com/Deamos/flask-nginx-rtmp-manager/-/tags"><i class="fas fa-file-alt"></i> <b>Changelog</b></a>
-                        <a class="releaseButton releaseButton-purple shadow" href="https://gitlab.com/Deamos/flask-nginx-rtmp-manager"><i class="fas fa-code-branch"></i> <b>Source</b></a>
-                        <a class="releaseButton releaseButton-cyan shadow" id="release-href" href="#"><i class="far fa-file-archive"></i> <b>Release (tar.gz)</b></a>
-                    </div>
+                    <a href="https://gitlab.com/osp-group/flask-nginx-rtmp-manager/-/releases"><img src="https://img.shields.io/badge/dynamic/json?color=blue&label=release&query=%24%5B0%5D.tag_name&url=https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%2Fprojects%2F5871108%2Freleases"></a>
+                    <a href="https://hub.docker.com/r/deamos/openstreamingplatform"><img src="https://img.shields.io/docker/v/deamos/openstreamingplatform/latest?color=blue&label=docker"></a>
+                    <a href="https://gitlab.com/osp-group/flask-nginx-rtmp-manager/-/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange"></a>
+                    <br>
+                    <a href="https://opencollective.com/open-streaming-platform"><img src="https://img.shields.io/opencollective/all/open-streaming-platform"></a>
+                    <a href="https://discord.gg/Jp5rzbD"><img src="https://img.shields.io/discord/543114856941879296"></a>
                 </div>
             </div>
             <div class="social">
@@ -107,47 +101,7 @@
                 </div>
             </div>
         </div>
-    <script>
-        const repo = "https://gitlab.com/api/v4/projects/5871108/releases/"
-
-        var getJSON = function(url, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = 'json';
-            xhr.onload = function() {
-              var status = xhr.status;
-              if (status === 200) {
-                callback(null, xhr.response);
-              } else {
-                callback(status, xhr.response);
-              }
-            };
-            xhr.send();
-        };
-
-        getJSON(repo,
-        function(err, data) {
-          if (err !== null) {
-            alert('Something went wrong: ' + err);
-          } else {
-              var tagID = data[0]['tag_name'];
-              var releaseDate = data[0]['released_at'].substring(0,10);
-              var releases = data[0]['assets']['sources'];
-              var releaseArray = {};
-              for (var i = 0; i < releases.length; i++) {
-                 var key = releases[i]['format'];
-                 var val = releases[i]['url'];
-                 releaseArray[key] = val;
-              }
-              const getByKey = (arr,key) => (arr.find(x => Object.keys(x)[0] === key) || {})[key]
-
-              document.getElementById('releaseVersion').innerHTML = tagID;
-              document.getElementById('releaseDate').innerHTML = releaseDate;
-              document.getElementById('release-href').href=releaseArray['tar.gz']
-          }
-        });
-    </script>
-        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {"particles":{"number":{"value":160,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":true,"anim":{"enable":true,"speed":1,"opacity_min":0,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":4,"size_min":0.3,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":600}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"bubble"},"onclick":{"enable":true,"mode":"repulse"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":250,"size":0,"duration":2,"opacity":0,"speed":3},"repulse":{"distance":400,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, update;
     </script>
